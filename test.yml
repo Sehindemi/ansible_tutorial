@@ -1,11 +1,11 @@
 ---
 
-- hosts: db_server
-  become: true 
+- hosts: all
+  become: true
   pre_tasks:
-
-- name: install mariadb package(CentOS)
-    dnf:
-      name: mariadb
-      state: latest
-     when: ansible_distribution == "CentOS"
+     
+    name: install updates (CentOS)
+    dnf: 
+       update_only: yes
+       uppage_cahce: yes
+    when: ansible_distribution == "CentOS"
